@@ -12,7 +12,7 @@ const printFile = () => {
   document.write(currentFile.size);
 };
 
-
+const reader = new FileReader();
 
 
 
