@@ -8,7 +8,8 @@ let currentFile;
 
 const printFile = (event) => {
   readFiles(event);
-
+  currentFile = fileList[0]
+  document.write()
 }
 
 function readFiles(event) {
