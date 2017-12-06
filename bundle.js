@@ -96,7 +96,6 @@ const printFile = () => {
 };
 
 
-window.currentFile = currentFile;
 
 
 
