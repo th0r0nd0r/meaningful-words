@@ -9,16 +9,20 @@ let currentFile;
 const printFile = () => {
   currentFile = fileInput.files[0];
   document.write(currentFile.size);
+  loadAsText(currentFile);
 };
 
-const reader = new FileReader();
 
 const loadAsText = (file) => {
-  reader.readAsText(currentFile);
+  const reader = new FileReader();
+
+  reader.onload = () => {
+    let fileContents = this.result;
+    document.write(fileContents);
+  };
+
+  reader.readAsText(file);
 };
 
 
-reader.onload = () => {
-  let fileContents = this.result;
-};
 
