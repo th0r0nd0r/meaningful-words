@@ -86,5 +86,19 @@ const writ = () => {document.write(" exports/imports working");};
 
 /* harmony default export */ __webpack_exports__["a"] = (writ);
 
+let fileList;
+let currentFile;
+
+const printFile = (event) => {
+  readFiles(event);
+
+}
+
+function readFiles(event) {
+  fileList = event.target.files;
+}
+
+
+
 /***/ })
 /******/ ]);
