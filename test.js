@@ -1,6 +1,7 @@
 
 
 window.printFile = printFile;
+window.loadAsText = loadAsText;
 
 const fileInput = document.getElementById("file-input");
 let currentFile;
@@ -11,6 +12,11 @@ const printFile = () => {
 };
 
 const reader = new FileReader();
+
+const loadAsText = (file) => {
+  reader.readAsText(currentFile);
+};
+
 
 reader.onload = () => {
   let fileContents = this.result;
