@@ -1,4 +1,4 @@
-import writ from "./test"
+import writ from "./test";
 
 document.write("hello");
 
