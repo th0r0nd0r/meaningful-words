@@ -5,10 +5,15 @@ export default writ;
 
 
 const fileInput = document.getElementById("file-input");
-let currentFile = fileInput.files[0];
+let currentFile;
+
+const printFile = () => {
+  currentFile = fileInput.files[0];
+  document.write(currentFile.size);
+};
 
 
-
+window.currentFile = currentFile;
 
 
 
@@ -25,7 +30,7 @@ let currentFile = fileInput.files[0];
 //   document.write("something happened");
 // };
 
-// window.printFile = printFile;
+window.printFile = printFile;
 
 // function readFiles(event) {
 //   fileList = event.target.files;
