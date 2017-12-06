@@ -5,6 +5,15 @@
 </head>
 
 <body>
+
+  <input type="file" onchange="readFiles(event)" multiple>
+  
+  <script>
+    function readFiles(event) {
+      var fileList = event.target.files;
+    }
+  </script>
+  
   <script type="text/javascript" src="bundle.js" charset="utf-8"></script>
 </body>
 

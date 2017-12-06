@@ -82,8 +82,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__test__["a" /* default */])();
 
 "use strict";
 
-
-const writ = () => {document.write("exports/imports working");};
+const writ = () => {document.write(" exports/imports working");};
 
 /* harmony default export */ __webpack_exports__["a"] = (writ);
 
