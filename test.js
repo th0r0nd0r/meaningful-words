@@ -5,6 +5,7 @@ export default writ;
 
 
 const fileInput = document.getElementById("file-input");
+let currentFile = fileInput.files[0];
 
 
 

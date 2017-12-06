@@ -88,6 +88,7 @@ const writ = () => {document.write(" exports/imports working");};
 
 
 const fileInput = document.getElementById("file-input");
+let currentFile = fileInput.files[0];
 
 
 
