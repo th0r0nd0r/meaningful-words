@@ -1,5 +1,4 @@
-import writ from "./test";
+import "./test";
 
 document.write("hello");
 
-writ();

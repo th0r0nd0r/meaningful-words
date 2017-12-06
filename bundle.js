@@ -75,17 +75,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 document.write("hello");
 
-__WEBPACK_IMPORTED_MODULE_0__test___default()();
+
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-window.printFile = printFile;
-window.loadAsText = loadAsText;
 
 const fileInput = document.getElementById("file-input");
 let currentFile;
@@ -99,18 +94,20 @@ const printFile = () => {
 
 const loadAsText = (file) => {
   const reader = new FileReader();
-
+  
   reader.onload = () => {
     let fileContents = this.result;
     document.write(fileContents);
   };
-
+  
   reader.readAsText(file);
 };
 
 
 
 
+window.printFile = printFile;
+window.loadAsText = loadAsText;
 
 /***/ })
 /******/ ]);
