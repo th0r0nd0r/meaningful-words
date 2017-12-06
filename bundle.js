@@ -70,22 +70,21 @@
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__test__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__test___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__test__);
 
 
 document.write("hello");
 
-Object(__WEBPACK_IMPORTED_MODULE_0__test__["a" /* default */])();
+__WEBPACK_IMPORTED_MODULE_0__test___default()();
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, __webpack_exports__) {
 
 "use strict";
 
-const writ = () => {document.write(" exports/imports working");};
 
-/* harmony default export */ __webpack_exports__["a"] = (writ);
-
+window.printFile = printFile;
 
 const fileInput = document.getElementById("file-input");
 let currentFile;
@@ -97,26 +96,9 @@ const printFile = () => {
 
 const reader = new FileReader();
 
-
-
-
-
-
-
-// let fileList;
-// let currentFile;
-
-// const printFile = (event) => {
-//   readFiles(event);
-//   currentFile = fileList[0];
-//   document.write("something happened");
-// };
-
-window.printFile = printFile;
-
-// function readFiles(event) {
-//   fileList = event.target.files;
-// }
+reader.onload = () => {
+  let fileContents = this.result;
+};
 
 
 
