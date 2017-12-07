@@ -52,16 +52,20 @@ function ticked() {
   context.clearRect(0, 0, width, height);
   context.save();
   context.translate(width / 2, height / 2);
-
+  
   context.beginPath();
   nodes.forEach(function(d) {
     context.moveTo(d.x + d.r, d.y);
     context.arc(d.x, d.y, d.r, 0, tau);
+    context.fillStyle = "#ddd";
+    context.fill();
+  });
+
+  nodes.forEach(function(d) {
+    context.fillStyle = "black";
     context.fillText(d.word, d.x - (0.5 * d.r) , d.y + (0.2 * d.r));
   });
   
-  // context.fillStyle = "#ddd";
-  // context.fill();
   context.strokeStyle = "#333";
   context.stroke();
   context.restore();
