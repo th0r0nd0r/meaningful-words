@@ -101,8 +101,8 @@ const compareWordCounts = (word1, word2) => {
 };
 
 const nonsenseWords = [
-  "a", "to", "too", "if", "not", "but", "or", "and", "as", "the", "of", "be", "is", "that",
-  "in", "I", "by", "for"
+  "A", "To", "Too", "If", "Not", "But", "Or", "And", "As", "The", "Of", "Be", "Is", "That",
+  "In", "I", "By", "For", "On", "But", "At", "It", "An", "With", "Are", "From", "Let"
 ];
 
 
@@ -114,16 +114,22 @@ const splitText = (txt) => {
   
 };
 
+const capitalize = (word) => {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+};
+
 const hashWords = (txt) => {
   let words = splitText(txt);
   console.log("unsorted words");
   console.log(words);
 
   for (let i = 0; i < words.length; i++) {
-    if (wordCountsObj[words[i]]) {
-      wordCountsObj[words[i]]++;
+    let word = capitalize(words[i]);
+
+    if (wordCountsObj[word]) {
+      wordCountsObj[word]++;
     } else {
-      wordCountsObj[words[i]] = 1;
+      wordCountsObj[word] = 1;
     }
   }
   console.log("word counts");
@@ -131,9 +137,12 @@ const hashWords = (txt) => {
 
   // const allWords = Object.keys(wordCountsObj);
 
-  for (var property in wordCountsObj) {
-    if  (!nonsenseWords.includes(property)) {
-      allWords.push(property);
+  for (var word in wordCountsObj) {
+    if  (wordCountsObj.hasOwnProperty(word) && !nonsenseWords.includes(word) && word.length > 2) {
+      if (word.slice(-2) === "'s" && word.slice(-2) === "’s") {
+        word = word.slice(0, -2);
+      }
+      allWords.push(word);
     }
   }
   return allWords.sort(compareWordCounts);
