@@ -1,22 +1,22 @@
 import * as d3 from "d3";
 
-const links = [
-  { source: 'Baratheon', target:'Lannister' },
-  { source: 'Baratheon', target:'Stark' },
-  { source: 'Lannister', target:'Stark' },
-  { source: 'Stark', target:'Bolton' }
-];
+// const links = [
+//   { source: 'Baratheon', target:'Lannister' },
+//   { source: 'Baratheon', target:'Stark' },
+//   { source: 'Lannister', target:'Stark' },
+//   { source: 'Stark', target:'Bolton' }
+// ];
 
- // create empty nodes array
-const nodes = {};
+//  // create empty nodes array
+// const nodes = {};
 
-// compute nodes from links data
-links.forEach(function(link) {
-    link.source = nodes[link.source] ||
-        (nodes[link.source] = {name: link.source});
-    link.target = nodes[link.target] ||
-        (nodes[link.target] = {name: link.target});        
-});
+// // compute nodes from links data
+// links.forEach(function(link) {
+//     link.source = nodes[link.source] ||
+//         (nodes[link.source] = {name: link.source});
+//     link.target = nodes[link.target] ||
+//         (nodes[link.target] = {name: link.target});        
+// });
 
 var canvas = document.querySelector("canvas"),
   context = canvas.getContext("2d"),
@@ -24,11 +24,11 @@ var canvas = document.querySelector("canvas"),
   height = canvas.height,
   tau = 2 * Math.PI;
 
-// var nodes = d3.range(1000).map(function(i) {
-//   return {
-//     r: Math.random() * 14 + 4
-//   };
-// });
+var nodes = d3.range(1000).map(function(i) {
+  return {
+    r: Math.random() * 14 + 4
+  };
+});
 
 var simulation = d3
   .forceSimulation(nodes)

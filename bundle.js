@@ -70,10 +70,8 @@
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__word_counts__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__word_counts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__word_counts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bubbles__ = __webpack_require__(3);
 
-
+// import "./bubbles";
 
 document.write("hello");
 
@@ -82,7 +80,11 @@ document.write("hello");
 /***/ }),
 /* 1 */,
 /* 2 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bubbles__ = __webpack_require__(3);
+
 
 const fileInput = document.getElementById("file-input");
 let currentFile;
@@ -190,23 +192,23 @@ window.printFile = printFile;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_d3__ = __webpack_require__(175);
 
 
-const links = [
-  { source: 'Baratheon', target:'Lannister' },
-  { source: 'Baratheon', target:'Stark' },
-  { source: 'Lannister', target:'Stark' },
-  { source: 'Stark', target:'Bolton' }
-];
+// const links = [
+//   { source: 'Baratheon', target:'Lannister' },
+//   { source: 'Baratheon', target:'Stark' },
+//   { source: 'Lannister', target:'Stark' },
+//   { source: 'Stark', target:'Bolton' }
+// ];
 
- // create empty nodes array
-const nodes = {};
+//  // create empty nodes array
+// const nodes = {};
 
-// compute nodes from links data
-links.forEach(function(link) {
-    link.source = nodes[link.source] ||
-        (nodes[link.source] = {name: link.source});
-    link.target = nodes[link.target] ||
-        (nodes[link.target] = {name: link.target});        
-});
+// // compute nodes from links data
+// links.forEach(function(link) {
+//     link.source = nodes[link.source] ||
+//         (nodes[link.source] = {name: link.source});
+//     link.target = nodes[link.target] ||
+//         (nodes[link.target] = {name: link.target});        
+// });
 
 var canvas = document.querySelector("canvas"),
   context = canvas.getContext("2d"),
@@ -214,11 +216,11 @@ var canvas = document.querySelector("canvas"),
   height = canvas.height,
   tau = 2 * Math.PI;
 
-// var nodes = d3.range(1000).map(function(i) {
-//   return {
-//     r: Math.random() * 14 + 4
-//   };
-// });
+var nodes = __WEBPACK_IMPORTED_MODULE_0_d3__["e" /* range */](1000).map(function(i) {
+  return {
+    r: Math.random() * 14 + 4
+  };
+});
 
 var simulation = __WEBPACK_IMPORTED_MODULE_0_d3__["b" /* forceSimulation */](nodes)
   .velocityDecay(0.2)
@@ -9624,7 +9626,7 @@ function transform(node) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__build_package__ = __webpack_require__(176);
 /* unused harmony reexport version */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_d3_array__ = __webpack_require__(7);
-/* unused harmony namespace reexport */
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_1_d3_array__["f"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_d3_axis__ = __webpack_require__(193);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_d3_brush__ = __webpack_require__(197);

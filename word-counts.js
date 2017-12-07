@@ -1,3 +1,5 @@
+import "./bubbles";
+
 const fileInput = document.getElementById("file-input");
 let currentFile;
 let text;

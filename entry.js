@@ -1,5 +1,5 @@
 import "./word-counts";
-import "./bubbles";
+// import "./bubbles";
 
 document.write("hello");
 
