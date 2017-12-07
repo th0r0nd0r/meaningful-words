@@ -1,5 +1,3 @@
-
-
 const fileInput = document.getElementById("file-input");
 let currentFile;
 let text;
@@ -16,6 +14,10 @@ const compareWordCounts = (word1, word2) => {
     return 0;
   }
 };
+
+const nonsenseWords = [
+  "a", "to", "too", "if", "not", "but", "or", "and", "as", "the"
+];
 
 
 const splitText = (txt) => {
@@ -40,7 +42,13 @@ const hashWords = (txt) => {
   }
   console.log("word counts");
   console.log(wordCountsObj);
-  return Object.keys(wordCountsObj).sort(compareWordCounts);
+
+  allWords = Object.keys(wordCountsObj)
+
+  for (let i = 0; i < allWords.length; i++) {
+    
+  }
+  return .sort(compareWordCounts);
 };
 
 
