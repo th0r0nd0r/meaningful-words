@@ -268,12 +268,12 @@ const runSimulation = (orderedWords, wordCounts) => {
       // console.log("word");
       // console.log(d.word);
       if (textWidth < (diameter)) {
-        startX = d.x - textWidth / 2;
-        startY = d.y + 0.2 * d.y;
+        startY = d.y + 0.1 * d.r;
       } else {
-        startX = d.x - (0.5 * d.r + d.r);
-        startY = d.y + (0.2 * d.r + d.r)
+        startY = d.y + d.r + 10;
       }
+
+      startX = (d.x - textWidth / 2) - 0.03 * d.r;
       context.fillText(d.word, startX, startY );
     });
     
