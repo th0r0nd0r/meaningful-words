@@ -256,6 +256,7 @@ const runSimulation = (orderedWords, wordCounts) => {
   
     nodes.forEach(function(d) {
       context.fillStyle = "black";
+      const textWidth = context.measureText(d.word);
       context.fillText(d.word, d.x - (0.5 * d.r) , d.y + (0.2 * d.r));
     });
     
