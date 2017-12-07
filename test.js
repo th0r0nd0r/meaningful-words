@@ -8,9 +8,9 @@ let wordCountsObj = {};
 
 
 const compareWordCounts = (word1, word2) => {
-  if (wordCountsObj[word1] < wordCountsObj[word2]) {
+  if (wordCountsObj[word1] > wordCountsObj[word2]) {
     return -1;
-  } else if (wordCountsObj[word1] > wordCountsObj[word2]) {
+  } else if (wordCountsObj[word1] < wordCountsObj[word2]) {
     return 1;
   } else {
     return 0;
@@ -40,7 +40,7 @@ const hashWords = (txt) => {
   }
   console.log("word counts");
   console.log(wordCountsObj);
-  words.sort(compareWordCounts);
+  return Object.keys(wordCountsObj).sort(compareWordCounts);
 };
 
 
