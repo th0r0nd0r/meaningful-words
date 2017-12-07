@@ -87,7 +87,18 @@ const fileInput = document.getElementById("file-input");
 let currentFile;
 let text;
 let wordCounts = [];
-let wordPresence = {};
+let wordCountsObj = {};
+
+
+const compareWordCounts = (word1, word2) => {
+  if (wordCountsObj[word1] < wordCountsObj[word2]) {
+    return -1;
+  } else if (wordCountsObj[word1] > wordCountsObj[word2]) {
+    return 1;
+  } else {
+    return 0;
+  }
+};
 
 
 const splitText = (txt) => {
@@ -96,10 +107,14 @@ const splitText = (txt) => {
   return newText.split(" ");
 };
 
-const hashWords = (words) => {
+const hashWords = (txt) => {
+  let words = splitText(txt);
+
   for (let i = 0; i < words.length; i++) {
-    if (wordPresence[words[i]]) {
-      
+    if (wordCountsObj[words[i]]) {
+      wordCountsObj[words[i]]++;
+    } else {
+      wordCountsObj[words[i]] = 1;
     }
   }
 };
