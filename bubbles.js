@@ -35,14 +35,14 @@ const runSimulation = (orderedWords, wordCounts) => {
   var simulation = d3
     .forceSimulation(nodes)
     .velocityDecay(0.2)
-    .force("x", d3.forceX().strength(0.002))
-    .force("y", d3.forceY().strength(0.002))
+    .force("x", d3.forceX().strength(0.0002))
+    .force("y", d3.forceY().strength(0.0002))
     .force(
       "collide",
       d3
         .forceCollide()
         .radius(function(d) {
-          return d.r + 5.5;
+          return d.r + 9.5;
         })
         .strength(0.1)
         .iterations(2)
@@ -58,7 +58,7 @@ const runSimulation = (orderedWords, wordCounts) => {
     nodes.forEach(function(d) {
       context.moveTo(d.x + d.r, d.y);
       context.arc(d.x, d.y, d.r, 0, tau);
-      context.fillStyle = "#ddd";
+      context.fillStyle = "#6697e8";
       context.fill();
     });
   

@@ -108,7 +108,7 @@ const compareWordCounts = (word1, word2) => {
 const nonsenseWords = [
   "A", "To", "Too", "If", "Not", "But", "Or", "And", "As", "The", "Of", "Be", "Is", "That",
   "In", "I", "By", "For", "On", "But", "At", "It", "An", "With", "Are", "From", "Let", "can", 
-  "Its", "Has", "Off", "Was", "Which", "Would"
+  "Its", "Has", "Off", "Was", "Which", "Would", "Their", "They're", "There"
 ];
 
 
@@ -228,13 +228,13 @@ const runSimulation = (orderedWords, wordCounts) => {
   
   var simulation = __WEBPACK_IMPORTED_MODULE_0_d3__["b" /* forceSimulation */](nodes)
     .velocityDecay(0.2)
-    .force("x", __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* forceX */]().strength(0.002))
-    .force("y", __WEBPACK_IMPORTED_MODULE_0_d3__["d" /* forceY */]().strength(0.002))
+    .force("x", __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* forceX */]().strength(0.0002))
+    .force("y", __WEBPACK_IMPORTED_MODULE_0_d3__["d" /* forceY */]().strength(0.0002))
     .force(
       "collide",
       __WEBPACK_IMPORTED_MODULE_0_d3__["a" /* forceCollide */]()
         .radius(function(d) {
-          return d.r + 5.5;
+          return d.r + 9.5;
         })
         .strength(0.1)
         .iterations(2)
@@ -250,7 +250,7 @@ const runSimulation = (orderedWords, wordCounts) => {
     nodes.forEach(function(d) {
       context.moveTo(d.x + d.r, d.y);
       context.arc(d.x, d.y, d.r, 0, tau);
-      context.fillStyle = "#ddd";
+      context.fillStyle = "#6697e8";
       context.fill();
     });
   
