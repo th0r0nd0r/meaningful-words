@@ -97,8 +97,10 @@ const splitText = (txt) => {
 };
 
 const hashWords = (words) => {
-  for (i = 0; i < words.length; i++) {
-
+  for (let i = 0; i < words.length; i++) {
+    if (wordPresence[words[i]]) {
+      
+    }
   }
 };
 
