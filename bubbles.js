@@ -19,10 +19,13 @@ var canvas = document.getElementById("canvas");
 // });
 
 const runSimulation = (orderedWords, wordCounts) => {
-    const context = canvas.getContext("2d");
-    const width = canvas.width;
-    const height = canvas.height;
-    const tau = 2 * Math.PI;
+  let startX;
+  let startY;
+
+  const context = canvas.getContext("2d");
+  const width = canvas.width;
+  const height = canvas.height;
+  const tau = 2 * Math.PI;
   
   var nodes = d3.range(50).map(function(i) {
     let word = orderedWords[i];
@@ -73,11 +76,13 @@ const runSimulation = (orderedWords, wordCounts) => {
       // console.log("word");
       // console.log(d.word);
       if (textWidth < (diameter)) {
-        let startX = d.x - 
-        context.fillText(d.word, d.x );
+        startX = d.x - textWidth / 2;
+        startY = d.y + 0.2 * d.y;
       } else {
-        context.fillText(d.word, d.x - (0.5 * d.r + d.r) , d.y + (0.2 * d.r + d.r));
+        startX = d.x - (0.5 * d.r + d.r);
+        startY = d.y + (0.2 * d.r + d.r)
       }
+      context.fillText(d.word, startX, startY );
     });
     
     context.strokeStyle = "#333";
