@@ -4,7 +4,6 @@ let currentFile;
 
 const printFile = () => {
   currentFile = fileInput.files[0];
-  document.write(currentFile.size);
   loadAsText(currentFile);
 };
 

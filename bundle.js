@@ -87,7 +87,6 @@ let currentFile;
 
 const printFile = () => {
   currentFile = fileInput.files[0];
-  document.write(currentFile.size);
   loadAsText(currentFile);
 };
 
@@ -95,8 +94,9 @@ const printFile = () => {
 const loadAsText = (file) => {
   const reader = new FileReader();
   
-  reader.onload = (loadedEvent) => {
-    document.write(loadedEvent.target.result);
+  reader.onload = () => {
+    let fileContents = this.result;
+    document.write(fileContents);
   };
   
   reader.readAsText(file);
