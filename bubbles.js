@@ -1,8 +1,5 @@
 import * as d3 from "d3";
 
-const height = 480;
-const width = 640;
-
 const links = [
   { source: 'Baratheon', target:'Lannister' },
   { source: 'Baratheon', target:'Stark' },
@@ -21,55 +18,48 @@ links.forEach(function(link) {
         (nodes[link.target] = {name: link.target});        
 });
 
-// add a SVG to the body for our viz
-const svg=d3.select('body').append('svg')
-    .attr('width', width)
-    .attr('height', height);
+var canvas = document.querySelector("canvas"),
+  context = canvas.getContext("2d"),
+  width = canvas.width,
+  height = canvas.height,
+  tau = 2 * Math.PI;
 
-// use the force
-var force = d3.forceSimulation() //build the layout
-    .size([width, height]) //specified earlier
-    .nodes(d3.values(nodes)) //add nodes
-    .links(links) //add links
-    .on("tick", tick) //what to do
-    .linkDistance(300) //set for proper svg size
-    .start(); //kick the party off!
+// var nodes = d3.range(1000).map(function(i) {
+//   return {
+//     r: Math.random() * 14 + 4
+//   };
+// });
 
-// add the links
-var link = svg.selectAll('.link')
-    .data(links)
-    .enter().append('line')
-    .attr('class', 'link'); 
+var simulation = d3
+  .forceSimulation(nodes)
+  .velocityDecay(0.2)
+  .force("x", d3.forceX().strength(0.002))
+  .force("y", d3.forceY().strength(0.002))
+  .force(
+    "collide",
+    d3
+      .forceCollide()
+      .radius(function(d) {
+        return d.r + 0.5;
+      })
+      .iterations(2)
+  )
+  .on("tick", ticked);
 
-// add the nodes
-var node = svg.selectAll('.node')
-    .data(force.nodes()) //add
-    .enter().append('circle')
-    .attr('class', 'node')
-    .attr('r', width * 0.03); //radius of circle
+function ticked() {
+  context.clearRect(0, 0, width, height);
+  context.save();
+  context.translate(width / 2, height / 2);
 
+  context.beginPath();
+  nodes.forEach(function(d) {
+    context.moveTo(d.x + d.r, d.y);
+    context.arc(d.x, d.y, d.r, 0, tau);
+  });
+  context.fillStyle = "#ddd";
+  context.fill();
+  context.strokeStyle = "#333";
+  context.stroke();
 
-function tick(e) {
-  node
-    .attr("cx", function(d) {
-      return d.x;
-    })
-    .attr("cy", function(d) {
-      return d.y;
-    })
-    .call(force.drag);
-
-  link
-    .attr("x1", function(d) {
-      return d.source.x;
-    })
-    .attr("y1", function(d) {
-      return d.source.y;
-    })
-    .attr("x2", function(d) {
-      return d.target.x;
-    })
-    .attr("y2", function(d) {
-      return d.target.y;
-    });
+  context.restore();
 }

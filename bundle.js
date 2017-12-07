@@ -190,9 +190,6 @@ window.printFile = printFile;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_d3__ = __webpack_require__(175);
 
 
-const height = 480;
-const width = 640;
-
 const links = [
   { source: 'Baratheon', target:'Lannister' },
   { source: 'Baratheon', target:'Stark' },
@@ -211,57 +208,48 @@ links.forEach(function(link) {
         (nodes[link.target] = {name: link.target});        
 });
 
-// add a SVG to the body for our viz
-const svg=__WEBPACK_IMPORTED_MODULE_0_d3__["b" /* select */]('body').append('svg')
-    .attr('width', width)
-    .attr('height', height);
+var canvas = document.querySelector("canvas"),
+  context = canvas.getContext("2d"),
+  width = canvas.width,
+  height = canvas.height,
+  tau = 2 * Math.PI;
 
-// use the force
-var force = __WEBPACK_IMPORTED_MODULE_0_d3__["a" /* forceSimulation */]() //build the layout
-    .size([width, height]) //specified earlier
-    .nodes(__WEBPACK_IMPORTED_MODULE_0_d3__["c" /* values */](nodes)) //add nodes
-    .links(links) //add links
-    .on("tick", tick) //what to do
-    .linkDistance(300) //set for proper svg size
-    .start(); //kick the party off!
+// var nodes = d3.range(1000).map(function(i) {
+//   return {
+//     r: Math.random() * 14 + 4
+//   };
+// });
 
-// add the links
-var link = svg.selectAll('.link')
-    .data(links)
-    .enter().append('line')
-    .attr('class', 'link'); 
+var simulation = __WEBPACK_IMPORTED_MODULE_0_d3__["b" /* forceSimulation */](nodes)
+  .velocityDecay(0.2)
+  .force("x", __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* forceX */]().strength(0.002))
+  .force("y", __WEBPACK_IMPORTED_MODULE_0_d3__["d" /* forceY */]().strength(0.002))
+  .force(
+    "collide",
+    __WEBPACK_IMPORTED_MODULE_0_d3__["a" /* forceCollide */]()
+      .radius(function(d) {
+        return d.r + 0.5;
+      })
+      .iterations(2)
+  )
+  .on("tick", ticked);
 
-// add the nodes
-var node = svg.selectAll('.node')
-    .data(force.nodes()) //add
-    .enter().append('circle')
-    .attr('class', 'node')
-    .attr('r', width * 0.03); //radius of circle
+function ticked() {
+  context.clearRect(0, 0, width, height);
+  context.save();
+  context.translate(width / 2, height / 2);
 
+  context.beginPath();
+  nodes.forEach(function(d) {
+    context.moveTo(d.x + d.r, d.y);
+    context.arc(d.x, d.y, d.r, 0, tau);
+  });
+  context.fillStyle = "#ddd";
+  context.fill();
+  context.strokeStyle = "#333";
+  context.stroke();
 
-function tick(e) {
-  node
-    .attr("cx", function(d) {
-      return d.x;
-    })
-    .attr("cy", function(d) {
-      return d.y;
-    })
-    .call(force.drag);
-
-  link
-    .attr("x1", function(d) {
-      return d.source.x;
-    })
-    .attr("y1", function(d) {
-      return d.source.y;
-    })
-    .attr("x2", function(d) {
-      return d.target.x;
-    })
-    .attr("y2", function(d) {
-      return d.target.y;
-    });
+  context.restore();
 }
 
 /***/ }),
@@ -1459,7 +1447,7 @@ function nogamma(a, b) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_keys__ = __webpack_require__(291);
 /* unused harmony reexport keys */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_values__ = __webpack_require__(292);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_4__src_values__["a"]; });
+/* unused harmony reexport values */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__src_entries__ = __webpack_require__(293);
 /* unused harmony reexport entries */
 
@@ -9644,7 +9632,7 @@ function transform(node) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_d3_chord__ = __webpack_require__(283);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_d3_collection__ = __webpack_require__(27);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_5_d3_collection__["b"]; });
+/* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_d3_color__ = __webpack_require__(11);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_d3_dispatch__ = __webpack_require__(16);
@@ -9657,6 +9645,9 @@ function transform(node) {
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_d3_force__ = __webpack_require__(296);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_11_d3_force__["a"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_11_d3_force__["b"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_11_d3_force__["c"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_11_d3_force__["d"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_d3_format__ = __webpack_require__(74);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_d3_geo__ = __webpack_require__(326);
@@ -9680,7 +9671,7 @@ function transform(node) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_d3_scale__ = __webpack_require__(398);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_d3_selection__ = __webpack_require__(5);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_23_d3_selection__["f"]; });
+/* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_d3_shape__ = __webpack_require__(431);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_d3_time__ = __webpack_require__(48);
@@ -14346,7 +14337,7 @@ function set(object, f) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ __webpack_exports__["a"] = (function(map) {
+/* unused harmony default export */ var _unused_webpack_default_export = (function(map) {
   var values = [];
   for (var key in map) values.push(map[key]);
   return values;
@@ -14413,7 +14404,7 @@ var tsvFormatRows = tsv.formatRows;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_center__ = __webpack_require__(297);
 /* unused harmony reexport forceCenter */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_collide__ = __webpack_require__(298);
-/* unused harmony reexport forceCollide */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__src_collide__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_link__ = __webpack_require__(312);
 /* unused harmony reexport forceLink */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_manyBody__ = __webpack_require__(313);
@@ -14421,11 +14412,11 @@ var tsvFormatRows = tsv.formatRows;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_radial__ = __webpack_require__(314);
 /* unused harmony reexport forceRadial */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__src_simulation__ = __webpack_require__(125);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_5__src_simulation__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_5__src_simulation__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__src_x__ = __webpack_require__(315);
-/* unused harmony reexport forceX */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_6__src_x__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__src_y__ = __webpack_require__(316);
-/* unused harmony reexport forceY */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_7__src_y__["a"]; });
 
 
 
@@ -14499,7 +14490,7 @@ function y(d) {
   return d.y + d.vy;
 }
 
-/* unused harmony default export */ var _unused_webpack_default_export = (function(radius) {
+/* harmony default export */ __webpack_exports__["a"] = (function(radius) {
   var nodes,
       radii,
       strength = 1,
@@ -15443,7 +15434,7 @@ function find(nodeById, nodeId) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constant__ = __webpack_require__(22);
 
 
-/* unused harmony default export */ var _unused_webpack_default_export = (function(x) {
+/* harmony default export */ __webpack_exports__["a"] = (function(x) {
   var strength = Object(__WEBPACK_IMPORTED_MODULE_0__constant__["a" /* default */])(0.1),
       nodes,
       strengths,
@@ -15492,7 +15483,7 @@ function find(nodeById, nodeId) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constant__ = __webpack_require__(22);
 
 
-/* unused harmony default export */ var _unused_webpack_default_export = (function(y) {
+/* harmony default export */ __webpack_exports__["a"] = (function(y) {
   var strength = Object(__WEBPACK_IMPORTED_MODULE_0__constant__["a" /* default */])(0.1),
       nodes,
       strengths,
