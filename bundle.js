@@ -89,8 +89,8 @@ let text;
 
 
 const splitText = (txt) => {
-  let newText = txt.replace(/[.,\/#!$%\^&\*;:{}=\-_`"\?~()]/g,"");
-  // let newText = txt.replace(/the/g,"armadillo");
+  let newText = txt.replace(/["”“‘.,\/#!$%\^&\*;:{}=\-_`\?~()]/g, "");
+  // newText = newText.replace(/[""]/g,"armadillo");
   return newText;
 };
 
