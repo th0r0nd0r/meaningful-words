@@ -187,7 +187,10 @@ window.printFile = printFile;
 /* 3 */
 /***/ (function(module, exports) {
 
-var data = [
+const height = 480;
+const width = 640;
+
+const links = [
   { source: 'Baratheon', target:'Lannister' },
   { source: 'Baratheon', target:'Stark' },
   { source: 'Lannister', target:'Stark' },
@@ -195,7 +198,7 @@ var data = [
 ];
 
  // create empty nodes array
-var nodes = {};
+const nodes = {};
 
 // compute nodes from links data
 links.forEach(function(link) {
@@ -206,7 +209,7 @@ links.forEach(function(link) {
 });
 
 // add a SVG to the body for our viz
-var svg=d3.select('body').append('svg')
+const svg=d3.select('body').append('svg')
     .attr('width', width)
     .attr('height', height);
 
