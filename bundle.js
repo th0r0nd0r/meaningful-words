@@ -91,7 +91,7 @@ let text;
 const splitText = (txt) => {
   let newText = txt.replace(/["”“‘.,\/#!$%\^&\*;:{}=\-_`\?~()]/g, "");
   newText = newText.replace(/('[^a-z])(’[^a-z])/g, " ");
-  return newText;
+  return newText.split(" ");
 };
 
 
