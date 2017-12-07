@@ -3,6 +3,7 @@ let currentFile;
 let text;
 let wordCounts = [];
 let wordCountsObj = {};
+const allWords = [];
 
 
 const compareWordCounts = (word1, word2) => {
@@ -16,7 +17,8 @@ const compareWordCounts = (word1, word2) => {
 };
 
 const nonsenseWords = [
-  "a", "to", "too", "if", "not", "but", "or", "and", "as", "the"
+  "a", "to", "too", "if", "not", "but", "or", "and", "as", "the", "of", "be", "is", "that",
+  "in", "I", "by", "for"
 ];
 
 
@@ -43,12 +45,14 @@ const hashWords = (txt) => {
   console.log("word counts");
   console.log(wordCountsObj);
 
-  allWords = Object.keys(wordCountsObj)
+  // const allWords = Object.keys(wordCountsObj);
 
-  for (let i = 0; i < allWords.length; i++) {
-    
+  for (var property in wordCountsObj) {
+    if  (!nonsenseWords.includes(property)) {
+      allWords.push(property);
+    }
   }
-  return .sort(compareWordCounts);
+  return allWords.sort(compareWordCounts);
 };
 
 
