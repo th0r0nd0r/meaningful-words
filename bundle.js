@@ -104,11 +104,15 @@ const compareWordCounts = (word1, word2) => {
 const splitText = (txt) => {
   let newText = txt.replace(/["”“‘.,\/#!$%\^&\*;:{}=\-_`\?~()]/g, "");
   newText = newText.replace(/('[^a-z])(’[^a-z])/g, " ");
+  newText = newText.replace(/\n/g," ");
   return newText.split(" ");
+  
 };
 
 const hashWords = (txt) => {
   let words = splitText(txt);
+  console.log("unsorted words");
+  console.log(words);
 
   for (let i = 0; i < words.length; i++) {
     if (wordCountsObj[words[i]]) {
@@ -117,7 +121,8 @@ const hashWords = (txt) => {
       wordCountsObj[words[i]] = 1;
     }
   }
-
+  console.log("word counts");
+  console.log(wordCountsObj);
   words.sort(compareWordCounts);
 };
 
@@ -135,8 +140,10 @@ const loadAsText = (file) => {
   
   reader.onload = (loadedEvent) => {
     text = loadedEvent.target.result;
-    console.log(text);
+    // console.log(text);
     let sorted = hashWords(text);
+
+    console.log("sorted");
     console.log(sorted);
     document.write(sorted);
   };
