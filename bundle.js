@@ -108,7 +108,7 @@ const compareWordCounts = (word1, word2) => {
 const nonsenseWords = [
   "A", "To", "Too", "If", "Not", "But", "Or", "And", "As", "The", "Of", "Be", "Is", "That",
   "In", "I", "By", "For", "On", "But", "At", "It", "An", "With", "Are", "From", "Let", "can", 
-  "Its", "Has", "Off", "Was"
+  "Its", "Has", "Off", "Was", "Which", "Would"
 ];
 
 
@@ -218,10 +218,10 @@ const runSimulation = (orderedWords, wordCounts) => {
     const height = canvas.height;
     const tau = 2 * Math.PI;
   
-  var nodes = __WEBPACK_IMPORTED_MODULE_0_d3__["e" /* range */](100).map(function(i) {
+  var nodes = __WEBPACK_IMPORTED_MODULE_0_d3__["e" /* range */](50).map(function(i) {
     let word = orderedWords[i];
     return {
-      r: wordCounts[word] * 2 + 4,
+      r: wordCounts[word] * 4 + 4,
       word: word
     };
   });

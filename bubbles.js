@@ -24,10 +24,10 @@ const runSimulation = (orderedWords, wordCounts) => {
     const height = canvas.height;
     const tau = 2 * Math.PI;
   
-  var nodes = d3.range(100).map(function(i) {
+  var nodes = d3.range(50).map(function(i) {
     let word = orderedWords[i];
     return {
-      r: wordCounts[word] * 2 + 4,
+      r: wordCounts[word] * 4 + 4,
       word: word
     };
   });
