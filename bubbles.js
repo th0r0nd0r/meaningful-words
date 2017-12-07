@@ -33,3 +33,15 @@ var force = d3.layout.force() //build the layout
     .linkDistance(300) //set for proper svg size
     .start(); //kick the party off!
 
+// add the links
+var link = svg.selectAll('.link')
+    .data(links)
+    .enter().append('line')
+    .attr('class', 'link'); 
+
+// add the nodes
+var node = svg.selectAll('.node')
+    .data(force.nodes()) //add
+    .enter().append('circle')
+    .attr('class', 'node')
+    .attr('r', width * 0.03); //radius of circle
