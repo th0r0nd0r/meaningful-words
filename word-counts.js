@@ -1,4 +1,4 @@
-import "./bubbles";
+import runSimulation from "./bubbles";
 
 const fileInput = document.getElementById("file-input");
 let currentFile;
@@ -87,7 +87,9 @@ const loadAsText = (file) => {
 
     console.log("sorted");
     console.log(sorted);
-    document.write(sorted);
+    // document.write(sorted);
+
+    runSimulation(sorted, wordCountsObj);
   };
   
   reader.readAsText(file);

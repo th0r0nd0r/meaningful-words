@@ -173,7 +173,9 @@ const loadAsText = (file) => {
 
     console.log("sorted");
     console.log(sorted);
-    document.write(sorted);
+    // document.write(sorted);
+
+    Object(__WEBPACK_IMPORTED_MODULE_0__bubbles__["a" /* default */])(sorted, wordCountsObj);
   };
   
   reader.readAsText(file);
@@ -191,7 +193,7 @@ window.printFile = printFile;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_d3__ = __webpack_require__(175);
 
-
+var canvas = document.getElementById("canvas");
 // const links = [
 //   { source: 'Baratheon', target:'Lannister' },
 //   { source: 'Baratheon', target:'Stark' },
@@ -210,56 +212,60 @@ window.printFile = printFile;
 //         (nodes[link.target] = {name: link.target});        
 // });
 
-var canvas = document.querySelector("canvas"),
-  context = canvas.getContext("2d"),
-  width = canvas.width,
-  height = canvas.height,
-  tau = 2 * Math.PI;
-
-var nodes = __WEBPACK_IMPORTED_MODULE_0_d3__["e" /* range */](100).map(function(i) {
-  return {
-    r: Math.random() * 20 + 4,
-    word: "abc"
-  };
-});
-
-var simulation = __WEBPACK_IMPORTED_MODULE_0_d3__["b" /* forceSimulation */](nodes)
-  .velocityDecay(0.2)
-  .force("x", __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* forceX */]().strength(0.002))
-  .force("y", __WEBPACK_IMPORTED_MODULE_0_d3__["d" /* forceY */]().strength(0.002))
-  .force(
-    "collide",
-    __WEBPACK_IMPORTED_MODULE_0_d3__["a" /* forceCollide */]()
-      .radius(function(d) {
-        return d.r + 5.5;
-      })
-      .strength(0.1)
-      .iterations(2)
-  )
-  .on("tick", ticked);
-
-function ticked() {
-  context.clearRect(0, 0, width, height);
-  context.save();
-  context.translate(width / 2, height / 2);
+const runSimulation = (orderedWords, wordCounts) => {
+    const context = canvas.getContext("2d");
+    const width = canvas.width;
+    const height = canvas.height;
+    const tau = 2 * Math.PI;
   
-  context.beginPath();
-  nodes.forEach(function(d) {
-    context.moveTo(d.x + d.r, d.y);
-    context.arc(d.x, d.y, d.r, 0, tau);
-    context.fillStyle = "#ddd";
-    context.fill();
-  });
-
-  nodes.forEach(function(d) {
-    context.fillStyle = "black";
-    context.fillText(d.word, d.x - (0.5 * d.r) , d.y + (0.2 * d.r));
+  var nodes = __WEBPACK_IMPORTED_MODULE_0_d3__["e" /* range */](100).map(function(i) {
+    let word = orderedWords[i];
+    return {
+      r: wordCounts[word] * 2 + 4,
+      word: word
+    };
   });
   
-  context.strokeStyle = "#333";
-  context.stroke();
-  context.restore();
-}
+  var simulation = __WEBPACK_IMPORTED_MODULE_0_d3__["b" /* forceSimulation */](nodes)
+    .velocityDecay(0.2)
+    .force("x", __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* forceX */]().strength(0.002))
+    .force("y", __WEBPACK_IMPORTED_MODULE_0_d3__["d" /* forceY */]().strength(0.002))
+    .force(
+      "collide",
+      __WEBPACK_IMPORTED_MODULE_0_d3__["a" /* forceCollide */]()
+        .radius(function(d) {
+          return d.r + 5.5;
+        })
+        .strength(0.1)
+        .iterations(2)
+    )
+    .on("tick", ticked);
+  
+  function ticked() {
+    context.clearRect(0, 0, width, height);
+    context.save();
+    context.translate(width / 2, height / 2);
+    
+    context.beginPath();
+    nodes.forEach(function(d) {
+      context.moveTo(d.x + d.r, d.y);
+      context.arc(d.x, d.y, d.r, 0, tau);
+      context.fillStyle = "#ddd";
+      context.fill();
+    });
+  
+    nodes.forEach(function(d) {
+      context.fillStyle = "black";
+      context.fillText(d.word, d.x - (0.5 * d.r) , d.y + (0.2 * d.r));
+    });
+    
+    context.strokeStyle = "#333";
+    context.stroke();
+    context.restore();
+  }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (runSimulation);
 
 /***/ }),
 /* 4 */
