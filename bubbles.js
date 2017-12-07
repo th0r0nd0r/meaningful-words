@@ -1,3 +1,5 @@
+import * as d3 from "d3";
+
 const height = 480;
 const width = 640;
 
@@ -25,7 +27,7 @@ const svg=d3.select('body').append('svg')
     .attr('height', height);
 
 // use the force
-var force = d3.layout.force() //build the layout
+var force = d3.forceSimulation() //build the layout
     .size([width, height]) //specified earlier
     .nodes(d3.values(nodes)) //add nodes
     .links(links) //add links
