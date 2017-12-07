@@ -95,9 +95,8 @@ const printFile = () => {
 const loadAsText = (file) => {
   const reader = new FileReader();
   
-  reader.onload = () => {
-    let fileContents = this.result;
-    document.write(fileContents);
+  reader.onload = (loadedEvent) => {
+    document.write(loadedEvent.target.result);
   };
   
   reader.readAsText(file);
