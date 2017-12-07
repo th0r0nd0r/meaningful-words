@@ -71,6 +71,9 @@
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__word_counts__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__word_counts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__word_counts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bubbles__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bubbles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__bubbles__);
+
 
 
 document.write("hello");
@@ -88,6 +91,7 @@ let text;
 let wordCounts = [];
 let wordCountsObj = {};
 const allWords = [];
+let minLength = 5;
 
 
 const compareWordCounts = (word1, word2) => {
@@ -102,7 +106,8 @@ const compareWordCounts = (word1, word2) => {
 
 const nonsenseWords = [
   "A", "To", "Too", "If", "Not", "But", "Or", "And", "As", "The", "Of", "Be", "Is", "That",
-  "In", "I", "By", "For", "On", "But", "At", "It", "An", "With", "Are", "From", "Let"
+  "In", "I", "By", "For", "On", "But", "At", "It", "An", "With", "Are", "From", "Let", "can", 
+  "Its", "Has", "Off", "Was"
 ];
 
 
@@ -141,7 +146,7 @@ const hashWords = (txt) => {
   // const allWords = Object.keys(wordCountsObj);
 
   for (var word in wordCountsObj) {
-    if  (wordCountsObj.hasOwnProperty(word) && !nonsenseWords.includes(word) && word.length > 2) {
+    if  (wordCountsObj.hasOwnProperty(word) && !nonsenseWords.includes(word) && word.length >= minLength) {
       allWords.push(word);
     }
   }
@@ -177,6 +182,12 @@ const loadAsText = (file) => {
 
 window.printFile = printFile;
 // window.loadAsText = loadAsText;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+
 
 /***/ })
 /******/ ]);

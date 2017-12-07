@@ -4,6 +4,7 @@ let text;
 let wordCounts = [];
 let wordCountsObj = {};
 const allWords = [];
+let minLength = 5;
 
 
 const compareWordCounts = (word1, word2) => {
@@ -18,7 +19,8 @@ const compareWordCounts = (word1, word2) => {
 
 const nonsenseWords = [
   "A", "To", "Too", "If", "Not", "But", "Or", "And", "As", "The", "Of", "Be", "Is", "That",
-  "In", "I", "By", "For", "On", "But", "At", "It", "An", "With", "Are", "From", "Let"
+  "In", "I", "By", "For", "On", "But", "At", "It", "An", "With", "Are", "From", "Let", "can", 
+  "Its", "Has", "Off", "Was"
 ];
 
 
@@ -57,7 +59,7 @@ const hashWords = (txt) => {
   // const allWords = Object.keys(wordCountsObj);
 
   for (var word in wordCountsObj) {
-    if  (wordCountsObj.hasOwnProperty(word) && !nonsenseWords.includes(word) && word.length > 2) {
+    if  (wordCountsObj.hasOwnProperty(word) && !nonsenseWords.includes(word) && word.length >= minLength) {
       allWords.push(word);
     }
   }
