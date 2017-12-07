@@ -11,6 +11,9 @@ const splitText = (txt) => {
   return newText.split(" ");
 };
 
+const hashWords = (words) => {
+
+};
 
 
 
