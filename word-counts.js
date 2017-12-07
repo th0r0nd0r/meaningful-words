@@ -41,6 +41,9 @@ const hashWords = (txt) => {
 
   for (let i = 0; i < words.length; i++) {
     let word = capitalize(words[i]);
+    if (word.slice(-2) === "'s" || word.slice(-2) === "’s") {
+      word = word.slice(0, -2);
+    }
 
     if (wordCountsObj[word]) {
       wordCountsObj[word]++;
@@ -55,9 +58,6 @@ const hashWords = (txt) => {
 
   for (var word in wordCountsObj) {
     if  (wordCountsObj.hasOwnProperty(word) && !nonsenseWords.includes(word) && word.length > 2) {
-      if (word.slice(-2) === "'s" && word.slice(-2) === "’s") {
-        word = word.slice(0, -2);
-      }
       allWords.push(word);
     }
   }
