@@ -7,7 +7,7 @@ let text;
 
 const splitText = (txt) => {
   txt.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-  txt.replace(/the/g,"armadillo");
+  // txt.replace(/the/g,"armadillo");
 };
 
 
@@ -25,8 +25,10 @@ const loadAsText = (file) => {
   
   reader.onload = (loadedEvent) => {
     text = loadedEvent.target.result;
-    splitText(text);
-    document.write(text);
+    console.log(text);
+    let split = splitText(text);
+    console.log(split);
+    document.write(split);
   };
   
   reader.readAsText(file);
