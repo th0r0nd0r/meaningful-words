@@ -117,6 +117,8 @@ const hashWords = (txt) => {
       wordCountsObj[words[i]] = 1;
     }
   }
+
+  words.sort(compareWordCounts);
 };
 
 
@@ -134,9 +136,9 @@ const loadAsText = (file) => {
   reader.onload = (loadedEvent) => {
     text = loadedEvent.target.result;
     console.log(text);
-    let split = splitText(text);
-    console.log(split);
-    document.write(split);
+    let sorted = hashWords(text);
+    console.log(sorted);
+    document.write(sorted);
   };
   
   reader.readAsText(file);
