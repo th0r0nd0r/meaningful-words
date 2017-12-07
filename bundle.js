@@ -86,6 +86,8 @@ document.write("hello");
 const fileInput = document.getElementById("file-input");
 let currentFile;
 let text;
+let wordCounts = [];
+let wordPresence = {};
 
 
 const splitText = (txt) => {
@@ -95,7 +97,9 @@ const splitText = (txt) => {
 };
 
 const hashWords = (words) => {
+  for (i = 0; i < words.length; i++) {
 
+  }
 };
 
 
