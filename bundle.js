@@ -69,8 +69,8 @@
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__test__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__test___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__test__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__word_counts__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__word_counts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__word_counts__);
 
 
 document.write("hello");
@@ -78,7 +78,8 @@ document.write("hello");
 
 
 /***/ }),
-/* 1 */
+/* 1 */,
+/* 2 */
 /***/ (function(module, exports) {
 
 

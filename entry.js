@@ -1,4 +1,4 @@
-import "./test";
+import "./word-counts";
 
 document.write("hello");
 
