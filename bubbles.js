@@ -24,9 +24,10 @@ var canvas = document.querySelector("canvas"),
   height = canvas.height,
   tau = 2 * Math.PI;
 
-var nodes = d3.range(1000).map(function(i) {
+var nodes = d3.range(100).map(function(i) {
   return {
-    r: Math.random() * 14 + 4
+    r: Math.random() * 20 + 4,
+    word: "abc"
   };
 });
 
@@ -40,8 +41,9 @@ var simulation = d3
     d3
       .forceCollide()
       .radius(function(d) {
-        return d.r + 0.5;
+        return d.r + 5.5;
       })
+      .strength(0.1)
       .iterations(2)
   )
   .on("tick", ticked);
@@ -55,11 +57,12 @@ function ticked() {
   nodes.forEach(function(d) {
     context.moveTo(d.x + d.r, d.y);
     context.arc(d.x, d.y, d.r, 0, tau);
+    context.fillText(d.word, d.x - (0.5 * d.r) , d.y + (0.2 * d.r));
   });
-  context.fillStyle = "#ddd";
-  context.fill();
+  
+  // context.fillStyle = "#ddd";
+  // context.fill();
   context.strokeStyle = "#333";
   context.stroke();
-
   context.restore();
 }
