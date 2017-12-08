@@ -270,6 +270,8 @@ const runSimulation = (orderedWords, wordCounts) => {
   
 
 
+
+  // setting up the d3 force layout simulation
   const simulation = __WEBPACK_IMPORTED_MODULE_0_d3__["b" /* forceSimulation */](nodes)
     .velocityDecay(0.2)
     .force("x", __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* forceX */]().strength(0.0002))
@@ -288,7 +290,7 @@ const runSimulation = (orderedWords, wordCounts) => {
 
 
 
-
+  // this is like animate on canvas. This function runs at a fixed time interval.
   function ticked() {
 
     context.font = '12pt Arial';
