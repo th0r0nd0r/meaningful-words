@@ -132,8 +132,8 @@ const preloadedTexts = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  const sorted = hashWords(preloadedTexts["Dante"]);
-  runSimulation(sorted[0], sorted[1]);
+    const sorted = hashWords(preloadedTexts["Dante"]);
+    runSimulation(sorted[0], sorted[1]);
 });
 
 const loadKing = () => { 
@@ -155,14 +155,22 @@ const loadDante = () => {
   runSimulation(sortedd[0], sortedd[1]);
 };
 
-const loadText = () => {
+const form = document.getElementById("form");
+
+const loadText = (e) => {
+  e.preventDefault;
   const userText = document.getElementById("user-text").value;
-  document.getElementById("test").innerHTML = userText;
-  
+  const sorted = hashWords(userText);
+  runSimulation(sorted[0], sorted[1]);
 };
+
+form.addEventListener('submit', loadText);
+
+
 
 window.analyze = analyze;
 window.loadKing = loadKing;
 window.loadShakespeare = loadShakespeare;
 window.loadDante = loadDante;
 window.loadText = loadText;
+window.userText = userText;

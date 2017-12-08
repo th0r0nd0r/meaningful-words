@@ -221,8 +221,8 @@ const preloadedTexts = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  const sorted = hashWords(preloadedTexts["Dante"]);
-  Object(__WEBPACK_IMPORTED_MODULE_0__bubbles__["a" /* default */])(sorted[0], sorted[1]);
+    const sorted = hashWords(preloadedTexts["Dante"]);
+    Object(__WEBPACK_IMPORTED_MODULE_0__bubbles__["a" /* default */])(sorted[0], sorted[1]);
 });
 
 const loadKing = () => { 
@@ -244,17 +244,25 @@ const loadDante = () => {
   Object(__WEBPACK_IMPORTED_MODULE_0__bubbles__["a" /* default */])(sortedd[0], sortedd[1]);
 };
 
-const loadText = () => {
+const form = document.getElementById("form");
+
+const loadText = (e) => {
+  e.preventDefault;
   const userText = document.getElementById("user-text").value;
-  document.getElementById("test").innerHTML = userText;
-  
+  const sorted = hashWords(userText);
+  Object(__WEBPACK_IMPORTED_MODULE_0__bubbles__["a" /* default */])(sorted[0], sorted[1]);
 };
+
+form.addEventListener('submit', loadText);
+
+
 
 window.analyze = analyze;
 window.loadKing = loadKing;
 window.loadShakespeare = loadShakespeare;
 window.loadDante = loadDante;
 window.loadText = loadText;
+window.userText = userText;
 
 /***/ }),
 /* 3 */
