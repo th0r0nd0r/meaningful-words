@@ -38,7 +38,12 @@ const runSimulation = (orderedWords, wordCounts) => {
     words.slice(0,nodeCount).forEach((word) => {
       totalCount += counts[word];
     }); 
+    return totalCount / nodeCount;
   }
+
+  const avg = avgCount(orderedWords, wordCounts);
+  console.log("average count");
+  console.log(avg);
 
   const modifier = (1 / highestCount) * 100;
 
