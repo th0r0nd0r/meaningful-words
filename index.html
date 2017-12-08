@@ -6,17 +6,23 @@
     <title>Meaningful Words</title>
     <link rel="stylesheet" type="text/css" href="stylesheet.css" />
     <script src="./node_modules/d3"></script>
+    <script src="https://use.fontawesome.com/2dd0c38008.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   </head>
 
   <body>
     <h1>Meaningful Words</h1>
     <h3>Upload a .txt file to see its most common meaningful words</h3>
+    <div class="upload">
+      <label for="file-input" class="custom-file-upload">
+        <i class="fa fa-upload" aria-hidden="true"></i> Upload Your Text
+      </label>
+      <input type="file" id="file-input" class="file-input" onchange="javascript: analyze()">
+    </div>
 
     <div class="main">
       <div class="canvas-stuff">
-        <input type="file" id="file-input" class="file-input" onchange="javascript: analyze()">
-        <canvas id="canvas" class="canvas" width="950" height="950">Your browser doesn't support canvas</canvas>
+        <canvas id="canvas" class="canvas" width="1200" height="1000">Your browser doesn't support canvas</canvas>
       </div>
       <div class="sidebar">
         <h3 class="sidebar-title">Take a look at these famous works!</h3>
