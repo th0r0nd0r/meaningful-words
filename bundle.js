@@ -194,29 +194,21 @@ window.printFile = printFile;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_d3__ = __webpack_require__(175);
 
 var canvas = document.getElementById("canvas");
-// const links = [
-//   { source: 'Baratheon', target:'Lannister' },
-//   { source: 'Baratheon', target:'Stark' },
-//   { source: 'Lannister', target:'Stark' },
-//   { source: 'Stark', target:'Bolton' }
-// ];
-
-//  // create empty nodes array
-// const nodes = {};
-
-// // compute nodes from links data
-// links.forEach(function(link) {
-//     link.source = nodes[link.source] ||
-//         (nodes[link.source] = {name: link.source});
-//     link.target = nodes[link.target] ||
-//         (nodes[link.target] = {name: link.target});        
-// });
 
 const runSimulation = (orderedWords, wordCounts) => {
+
+  canvas.addEventListener("mousemove", updatePointer);
+
+  function updatePointer(e) {
+    pointer.x = e.x;
+    pointer.y = e.y;
+  }
+
   let startX;
   let startY;
 
   const context = canvas.getContext("2d");
+
   const width = canvas.width;
   const height = canvas.height;
   const tau = 2 * Math.PI;
@@ -228,6 +220,11 @@ const runSimulation = (orderedWords, wordCounts) => {
       word: word
     };
   });
+
+  nodes.push({r: 10});
+
+  const nonPointerNodes = nodes.slice(0, nodes.length - 1);
+  const pointer = nodes.slice(nodes.length - 1);
   
   var simulation = __WEBPACK_IMPORTED_MODULE_0_d3__["b" /* forceSimulation */](nodes)
     .velocityDecay(0.2)
@@ -245,28 +242,25 @@ const runSimulation = (orderedWords, wordCounts) => {
     .on("tick", ticked);
   
   function ticked() {
+
     context.clearRect(0, 0, width, height);
     context.save();
     context.translate(width / 2, height / 2);
+
     
     context.beginPath();
-    nodes.forEach(function(d) {
+    nonPointerNodes.forEach(function(d) {
       context.moveTo(d.x + d.r, d.y);
       context.arc(d.x, d.y, d.r, 0, tau);
       context.fillStyle = "#6697e8";
       context.fill();
     });
   
-    nodes.forEach(function(d) {
+    nonPointerNodes.forEach(function(d) {
       context.fillStyle = "black";
       const textWidth = context.measureText(d.word).width;
       const diameter = d.r * 2;
-      // console.log("text width");
-      // console.log(textWidth);
-      // console.log("radius");
-      // console.log(d.r);
-      // console.log("word");
-      // console.log(d.word);
+
       if (textWidth < (diameter)) {
         startY = d.y + 0.1 * d.r;
       } else {
