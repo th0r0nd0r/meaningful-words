@@ -4,7 +4,10 @@ var canvas = document.getElementById("canvas");
 
 // this function takes the words and word counts, and renders them as a d3 force layout graph
 const runSimulation = (orderedWords, wordCounts) => {
-
+  console.log("ordered words");
+  console.log(orderedWords);
+  console.log("word counts");
+  console.log(wordCounts);
   // This section creates a color gradient for the bubbles
   let offset = Math.random() * 10;
 
@@ -42,8 +45,8 @@ const runSimulation = (orderedWords, wordCounts) => {
 
 
   // highestCount and avg help me make a modifier for the bubbles' radius
-  const firstWord = orderedWords[0];
-  const highestCount = wordCounts[firstWord];
+  let firstWord = orderedWords[0];
+  let highestCount = wordCounts.counts[firstWord];
 
   function avgCount(words, counts) {
     let totalCount = 0;
@@ -53,12 +56,12 @@ const runSimulation = (orderedWords, wordCounts) => {
     return totalCount / nodeCount;
   }
 
-  const avg = avgCount(orderedWords, wordCounts);
-  console.log('average');
-  console.log(avg);
-  console.log("highest count");
-  console.log(highestCount);
-  console.log(wordCounts);
+  const avg = avgCount(orderedWords, wordCounts.counts);
+  // console.log('average');
+  // console.log(avg);
+  // console.log("highest count");
+  // console.log(highestCount);
+  // console.log(wordCounts);
 
   let modifier = (1 / highestCount) * 100 * (1.5 / Math.pow(1.3, avg / 4));
   if (avg < 5 && highestCount < 5) {
@@ -71,7 +74,7 @@ const runSimulation = (orderedWords, wordCounts) => {
   const nodes = d3.range(nodeCount).map(function(i) {
     let word = orderedWords[i];
     return {
-      r: wordCounts[word] * modifier + 4,
+      r: wordCounts.counts[word] * modifier + 4,
       word: word
     };
   });
@@ -80,8 +83,8 @@ const runSimulation = (orderedWords, wordCounts) => {
   // this is another bit for interactivity.  The pointer node represents the user's mouse.
   nodes.push({r: 10});
 
-  const nonPointerNodes = nodes.slice(0, nodes.length - 1);
-  const pointer = nodes.slice(nodes.length - 1);
+  let nonPointerNodes = nodes.slice(0, nodes.length - 1);
+  let pointer = nodes.slice(nodes.length - 1);
   
 
 
