@@ -3,6 +3,13 @@ var canvas = document.getElementById("canvas");
 
 const runSimulation = (orderedWords, wordCounts) => {
 
+  function getColor(value, max) {
+    let newValue = ((max)/(max)*(value-max) + max) / 100;
+    //value from 0 to 1
+    let hue = ((40 - newValue) * 100).toString(10);
+    return ["hsl(", hue, ",100%,50%)"].join("");
+  }
+
   canvas.addEventListener("mousemove", updatePointer);
 
   function updatePointer(e) {
@@ -69,9 +76,13 @@ const runSimulation = (orderedWords, wordCounts) => {
     context.beginPath();
     nonPointerNodes.forEach(function(d) {
       context.moveTo(d.x + d.r, d.y);
+      context.beginPath();
       context.arc(d.x, d.y, d.r, 0, tau);
-      context.fillStyle = "#6697e8";
+      context.fillStyle = getColor(d.r, highestCount);
       context.fill();
+      context.strokeStyle = "#333";
+      context.stroke();
+      context.closePath();
     });
   
     nonPointerNodes.forEach(function(d) {
@@ -89,8 +100,6 @@ const runSimulation = (orderedWords, wordCounts) => {
       context.fillText(d.word, startX, startY );
     });
     
-    context.strokeStyle = "#333";
-    context.stroke();
     context.restore();
   }
 };
