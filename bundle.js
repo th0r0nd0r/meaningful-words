@@ -115,7 +115,8 @@ const compareWordCounts = (word1, word2) => {
 const nonsenseWords = [
   "A", "To", "Too", "If", "Not", "But", "Or", "And", "As", "The", "Of", "Be", "Is", "That",
   "In", "I", "By", "For", "On", "But", "At", "It", "An", "With", "Are", "From", "Let", "can", 
-  "Its", "Has", "Off", "Was", "Which", "Would", "Their", "They're", "There"
+  "Its", "Has", "Off", "Was", "Which", "Would", "Their", "They're", "There", "Where", "every", 
+  "Through", "Those", "Shall", "Whose"
 ];
 
 
@@ -274,8 +275,16 @@ const runSimulation = (orderedWords, wordCounts) => {
   }
 
   const avg = avgCount(orderedWords, wordCounts);
+  console.log('average');
+  console.log(avg);
+  console.log("highest count");
+  console.log(highestCount);
+  console.log(wordCounts);
 
-  const modifier = (1 / highestCount) * 100 * (1.5 / Math.pow(1.3, avg / 4));
+  let modifier = (1 / highestCount) * 100 * (1.5 / Math.pow(1.3, avg / 4));
+  if (avg < 5 && highestCount < 5) {
+    modifier /= 3;
+  }
 
 
 

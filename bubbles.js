@@ -54,8 +54,16 @@ const runSimulation = (orderedWords, wordCounts) => {
   }
 
   const avg = avgCount(orderedWords, wordCounts);
+  console.log('average');
+  console.log(avg);
+  console.log("highest count");
+  console.log(highestCount);
+  console.log(wordCounts);
 
-  const modifier = (1 / highestCount) * 100 * (1.5 / Math.pow(1.3, avg / 4));
+  let modifier = (1 / highestCount) * 100 * (1.5 / Math.pow(1.3, avg / 4));
+  if (avg < 5 && highestCount < 5) {
+    modifier /= 3;
+  }
 
 
 
