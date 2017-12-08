@@ -2,6 +2,8 @@ import * as d3 from "d3";
 var canvas = document.getElementById("canvas");
 
 const runSimulation = (orderedWords, wordCounts) => {
+  // const offsets = [4,3.5,2.5,6,6.5,8,9.5]
+  // let offset = offsets[Math.floor(Math.random() * 6)];
   let offset = Math.random() * 10;
 
   function getColor(value, max) {
@@ -31,7 +33,7 @@ const runSimulation = (orderedWords, wordCounts) => {
   const highestCount = wordCounts[firstWord];
   const modifier = 1 / highestCount * 80;
 
-  const nodes = d3.range(50).map(function(i) {
+  const nodes = d3.range(80).map(function(i) {
     let word = orderedWords[i];
     return {
       r: wordCounts[word] * modifier + 4,
