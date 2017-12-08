@@ -45,7 +45,7 @@ const runSimulation = (orderedWords, wordCounts) => {
   console.log("average count");
   console.log(avg);
 
-  const modifier = (1 / highestCount) * 100;
+  const modifier = (1 / highestCount) * 100 * (1.5 / Math.pow(1.3, avg / 4));
 
   const nodes = d3.range(nodeCount).map(function(i) {
     let word = orderedWords[i];
