@@ -28,12 +28,13 @@ const runSimulation = (orderedWords, wordCounts) => {
   const width = canvas.width;
   const height = canvas.height;
   const tau = 2 * Math.PI;
+  const nodeCount = 80;
   
   const firstWord = orderedWords[0];
   const highestCount = wordCounts[firstWord];
-  const modifier = 1 / highestCount * 80;
+  const modifier = (1 / highestCount) * 100;
 
-  const nodes = d3.range(80).map(function(i) {
+  const nodes = d3.range(nodeCount).map(function(i) {
     let word = orderedWords[i];
     return {
       r: wordCounts[word] * modifier + 4,
@@ -71,6 +72,7 @@ const runSimulation = (orderedWords, wordCounts) => {
 
   function ticked() {
 
+    context.font = '12pt Arial';
     context.clearRect(0, 0, width, height);
     context.save();
     context.translate(width / 2, height / 2);
