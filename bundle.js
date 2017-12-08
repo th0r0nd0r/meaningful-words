@@ -182,6 +182,7 @@ const loadAsText = (file) => {
     console.log(sorted);
     // document.write(sorted);
 
+    // imported from bubbles, this renders the bubbles to the canvas
     Object(__WEBPACK_IMPORTED_MODULE_0__bubbles__["a" /* default */])(sorted, wordCountsObj);
   };
   
@@ -193,7 +194,12 @@ const loadAsText = (file) => {
 window.analyze = analyze;
 // window.loadAsText = loadAsText;
 
-// 
+// the functions get called in this order, with this data respectively:
+// fileinput.onclick => analyze => loadAsText => readAsText => hashWords => splitText => runSimiulation
+//         File      =>   File  =>    File    =>    File    =>   text    =>    text   =>  array, POJO
+
+
+
 
 /***/ }),
 /* 3 */

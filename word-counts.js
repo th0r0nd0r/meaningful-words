@@ -97,6 +97,7 @@ const loadAsText = (file) => {
     console.log(sorted);
     // document.write(sorted);
 
+    // imported from bubbles, this renders the bubbles to the canvas
     runSimulation(sorted, wordCountsObj);
   };
   
@@ -108,4 +109,8 @@ const loadAsText = (file) => {
 window.analyze = analyze;
 // window.loadAsText = loadAsText;
 
-// 
+// the functions get called in this order, with this data respectively:
+// fileinput.onclick => analyze => loadAsText => readAsText => hashWords => splitText => runSimiulation
+//         File      =>   File  =>    File    =>    File    =>   text    =>    text   =>  array, POJO
+
+
