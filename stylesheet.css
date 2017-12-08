@@ -121,3 +121,9 @@ input[type="file"] {
   height: 300px;
   margin-bottom: 10px;
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

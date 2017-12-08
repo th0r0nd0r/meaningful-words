@@ -155,8 +155,14 @@ const loadDante = () => {
   runSimulation(sortedd[0], sortedd[1]);
 };
 
+const loadText = () => {
+  const userText = document.getElementById("user-text").value;
+  document.getElementById("test").innerHTML = userText;
+  
+};
 
 window.analyze = analyze;
 window.loadKing = loadKing;
 window.loadShakespeare = loadShakespeare;
 window.loadDante = loadDante;
+window.loadText = loadText;
