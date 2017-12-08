@@ -2,7 +2,7 @@
 
 This is a fun project I made using the D3.js library.
 
-I used the HTML5 File API to handle file manipulation browser-side, then came up with some algorithms to break a file into words and filter out the one's that don't matter.
+I used the HTML5 File API to handle file manipulation browser-side, then came up with some algorithms to break a file into words and filter out those that don't matter.
 
 Finally I used D3 to make a force layout graph with the most-used words in a text.
 
