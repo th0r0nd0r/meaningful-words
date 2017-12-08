@@ -1,9 +1,9 @@
 import * as d3 from "d3";
 var canvas = document.getElementById("canvas");
 
+
+// this function takes the words and word counts, and renders them as a d3 force layout graph
 const runSimulation = (orderedWords, wordCounts) => {
-  // const offsets = [4,3.5,2.5,6,6.5,8,9.5]
-  // let offset = offsets[Math.floor(Math.random() * 6)];
 
   // This section creates a color gradient for the bubbles
   let offset = Math.random() * 10;
@@ -107,7 +107,7 @@ const runSimulation = (orderedWords, wordCounts) => {
     context.save();
     context.translate(width / 2, height / 2);
 
-    
+    // for each node, draw its updated position using its radius and color
     context.beginPath();
     nonPointerNodes.forEach(function(d) {
       context.moveTo(d.x + d.r, d.y);
@@ -120,6 +120,7 @@ const runSimulation = (orderedWords, wordCounts) => {
       context.closePath();
     });
   
+    // for each node, throw the word on it.  If the word doesn't fit, put it below.
     nonPointerNodes.forEach(function(d) {
       context.fillStyle = "black";
       const textWidth = context.measureText(d.word).width;
