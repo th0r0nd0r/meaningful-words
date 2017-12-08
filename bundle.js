@@ -113,6 +113,7 @@ const nonsenseWords = [
 ];
 
 
+// uses regex to split a file into an array of capitalized words
 const splitText = (txt) => {
   let newText = txt.replace(/["”“‘.,\/#!$%\^&\*;:{}=_`\?~()]/g, "");
   newText = newText.replace(/('[^a-z])(’[^a-z])/g, " ");
@@ -125,6 +126,9 @@ const capitalize = (word) => {
   return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 };
 
+
+// this function, named after Ruby's hash, not a hashing function, creates an object
+// whose keys are words, and whose values are word counts
 const hashWords = (txt) => {
   let words = splitText(txt);
   console.log("unsorted words");
