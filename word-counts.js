@@ -27,15 +27,15 @@ const nonsenseWords = [
 
 
 const splitText = (txt) => {
-  let newText = txt.replace(/["”“‘.,\/#!$%\^&\*;:{}=\-_`\?~()]/g, "");
+  let newText = txt.replace(/["”“‘.,\/#!$%\^&\*;:{}=_`\?~()]/g, "");
   newText = newText.replace(/('[^a-z])(’[^a-z])/g, " ");
   newText = newText.replace(/\n/g," ");
+  newText = newText.replace(/-+/g, " ");
   return newText.split(" ");
-  
 };
 
 const capitalize = (word) => {
-  return word.charAt(0).toUpperCase() + word.slice(1);
+  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 };
 
 const hashWords = (txt) => {

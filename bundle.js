@@ -113,15 +113,15 @@ const nonsenseWords = [
 
 
 const splitText = (txt) => {
-  let newText = txt.replace(/["”“‘.,\/#!$%\^&\*;:{}=\-_`\?~()]/g, "");
+  let newText = txt.replace(/["”“‘.,\/#!$%\^&\*;:{}=_`\?~()]/g, "");
   newText = newText.replace(/('[^a-z])(’[^a-z])/g, " ");
   newText = newText.replace(/\n/g," ");
+  newText = newText.replace(/-+/g, " ");
   return newText.split(" ");
-  
 };
 
 const capitalize = (word) => {
-  return word.charAt(0).toUpperCase() + word.slice(1);
+  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 };
 
 const hashWords = (txt) => {
@@ -213,10 +213,14 @@ const runSimulation = (orderedWords, wordCounts) => {
   const height = canvas.height;
   const tau = 2 * Math.PI;
   
+  const firstWord = orderedWords[0];
+  const highestCount = wordCounts[firstWord];
+  const modifier = 1 / highestCount * 80;
+
   const nodes = __WEBPACK_IMPORTED_MODULE_0_d3__["e" /* range */](50).map(function(i) {
     let word = orderedWords[i];
     return {
-      r: wordCounts[word] * 4 + 4,
+      r: wordCounts[word] * modifier + 4,
       word: word
     };
   });
@@ -226,7 +230,9 @@ const runSimulation = (orderedWords, wordCounts) => {
   const nonPointerNodes = nodes.slice(0, nodes.length - 1);
   const pointer = nodes.slice(nodes.length - 1);
   
-  var simulation = __WEBPACK_IMPORTED_MODULE_0_d3__["b" /* forceSimulation */](nodes)
+
+
+  const simulation = __WEBPACK_IMPORTED_MODULE_0_d3__["b" /* forceSimulation */](nodes)
     .velocityDecay(0.2)
     .force("x", __WEBPACK_IMPORTED_MODULE_0_d3__["c" /* forceX */]().strength(0.0002))
     .force("y", __WEBPACK_IMPORTED_MODULE_0_d3__["d" /* forceY */]().strength(0.0002))
@@ -241,6 +247,10 @@ const runSimulation = (orderedWords, wordCounts) => {
     )
     .on("tick", ticked);
   
+
+
+
+
   function ticked() {
 
     context.clearRect(0, 0, width, height);

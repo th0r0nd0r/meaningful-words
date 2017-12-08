@@ -19,10 +19,14 @@ const runSimulation = (orderedWords, wordCounts) => {
   const height = canvas.height;
   const tau = 2 * Math.PI;
   
+  const firstWord = orderedWords[0];
+  const highestCount = wordCounts[firstWord];
+  const modifier = 1 / highestCount * 80;
+
   const nodes = d3.range(50).map(function(i) {
     let word = orderedWords[i];
     return {
-      r: wordCounts[word] * 4 + 4,
+      r: wordCounts[word] * modifier + 4,
       word: word
     };
   });
@@ -32,7 +36,9 @@ const runSimulation = (orderedWords, wordCounts) => {
   const nonPointerNodes = nodes.slice(0, nodes.length - 1);
   const pointer = nodes.slice(nodes.length - 1);
   
-  var simulation = d3
+
+
+  const simulation = d3
     .forceSimulation(nodes)
     .velocityDecay(0.2)
     .force("x", d3.forceX().strength(0.0002))
@@ -49,6 +55,10 @@ const runSimulation = (orderedWords, wordCounts) => {
     )
     .on("tick", ticked);
   
+
+
+
+
   function ticked() {
 
     context.clearRect(0, 0, width, height);
