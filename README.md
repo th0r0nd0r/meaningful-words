@@ -16,4 +16,4 @@ Finally I used D3 to make a force layout graph with the most-used words in a tex
 - The radius of a node corresponds to the number of occurrences of that word in the text (relative to the other words)
 - The color gradient is another visual representation of a word's concentration.
 
-Play around, have fun, and try uploading your own text!
+Play around, have fun, and try it with your own text!
