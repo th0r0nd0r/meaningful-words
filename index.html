@@ -11,8 +11,16 @@
   <body>
     <h1>Meaningful Words</h1>
     <h3>Upload a .txt file to see its most common meaningful words</h3>
-    <input type="file" id="file-input" onchange="javascript: printFile()">
-    <canvas id="canvas" width="950" height="950"></canvas>
+
+    <div class="main">
+      <div class="canvas-stuff">
+        <input type="file" id="file-input" onchange="javascript: analyze()">
+        <canvas id="canvas" width="950" height="950"></canvas>
+      </div>
+      <div>
+
+      </div>
+    </div>
 
     <script type="text/javascript" src="bundle.js" charset="utf-8"></script>
   </body>

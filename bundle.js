@@ -156,7 +156,7 @@ const hashWords = (txt) => {
 
 
 
-const printFile = () => {
+const analyze = () => {
   currentFile = fileInput.files[0];
   loadAsText(currentFile);
 };
@@ -183,7 +183,7 @@ const loadAsText = (file) => {
 
 
 
-window.printFile = printFile;
+window.analyze = analyze;
 // window.loadAsText = loadAsText;
 
 /***/ }),
