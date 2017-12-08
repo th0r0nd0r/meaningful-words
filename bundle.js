@@ -197,6 +197,8 @@ var canvas = document.getElementById("canvas");
 const runSimulation = (orderedWords, wordCounts) => {
   // const offsets = [4,3.5,2.5,6,6.5,8,9.5]
   // let offset = offsets[Math.floor(Math.random() * 6)];
+
+  // This section creates a color gradient for the bubbles
   let offset = Math.random() * 10;
 
   function getColor(value, max) {
@@ -206,12 +208,19 @@ const runSimulation = (orderedWords, wordCounts) => {
     return ["hsl(", hue, ",50%,70%)"].join("");
   }
 
+
+
+  // this is part of my ongoing implementation of mouse interactivity
   canvas.addEventListener("mousemove", updatePointer);
 
   function updatePointer(e) {
     pointer.x = e.x;
     pointer.y = e.y;
   }
+
+
+
+
 
   let startX;
   let startY;
