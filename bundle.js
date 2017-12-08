@@ -216,6 +216,18 @@ document.addEventListener("DOMContentLoaded", () => {
   Object(__WEBPACK_IMPORTED_MODULE_0__bubbles__["a" /* default */])(sorted, wordCountsObj);
 });
 
+const loadKing = () => {
+
+};
+
+const loadHamlet = () => {
+
+};
+
+const loadDante = () => {
+
+};
+
 /***/ }),
 /* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {

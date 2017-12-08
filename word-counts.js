@@ -127,3 +127,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let sorted = hashWords(preloadedTexts["Dante"]);
   runSimulation(sorted, wordCountsObj);
 });
+
+const loadKing = () => {
+
+};
+
+const loadHamlet = () => {
+
+};
+
+const loadDante = () => {
+
+};
