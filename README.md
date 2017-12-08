@@ -1,7 +1,8 @@
 # Meaningful Words
 
-
 ### The Product
+
+![words gif](https://user-images.githubusercontent.com/29419913/33754250-38046d82-dba0-11e7-941e-1ad635f177fa.gif)
 
 This is a fun project I made using the D3.js library.  It's designed to give readers a feel for the flavor of a text.
 
