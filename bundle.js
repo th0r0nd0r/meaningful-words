@@ -93,7 +93,7 @@ let wordCountsObj = {};
 const allWords = [];
 let minLength = 5;
 
-
+// this function gets used to sort words by word count
 const compareWordCounts = (word1, word2) => {
   if (wordCountsObj[word1] > wordCountsObj[word2]) {
     return -1;
@@ -104,6 +104,8 @@ const compareWordCounts = (word1, word2) => {
   }
 };
 
+
+// list of words not to include in the final array
 const nonsenseWords = [
   "A", "To", "Too", "If", "Not", "But", "Or", "And", "As", "The", "Of", "Be", "Is", "That",
   "In", "I", "By", "For", "On", "But", "At", "It", "An", "With", "Are", "From", "Let", "can", 
