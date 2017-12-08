@@ -28,7 +28,7 @@ const runSimulation = (orderedWords, wordCounts) => {
 
 
 
-
+  // declaring variables and getting canvas context
   let startX;
   let startY;
 
@@ -39,9 +39,12 @@ const runSimulation = (orderedWords, wordCounts) => {
   const tau = 2 * Math.PI;
   const nodeCount = 80;
   
+
+
+  // highestCount and avg help me make a modifier for the bubbles' radius
   const firstWord = orderedWords[0];
   const highestCount = wordCounts[firstWord];
-  
+
   function avgCount(words, counts) {
     let totalCount = 0;
     words.slice(0,nodeCount).forEach((word) => {
@@ -51,11 +54,12 @@ const runSimulation = (orderedWords, wordCounts) => {
   }
 
   const avg = avgCount(orderedWords, wordCounts);
-  console.log("average count");
-  console.log(avg);
 
   const modifier = (1 / highestCount) * 100 * (1.5 / Math.pow(1.3, avg / 4));
 
+
+
+  // here I'm populating the nodes object with radii and words
   const nodes = d3.range(nodeCount).map(function(i) {
     let word = orderedWords[i];
     return {
@@ -64,6 +68,8 @@ const runSimulation = (orderedWords, wordCounts) => {
     };
   });
 
+
+  // this is another bit for interactivity.  The pointer node represents the user's mouse.
   nodes.push({r: 10});
 
   const nonPointerNodes = nodes.slice(0, nodes.length - 1);
