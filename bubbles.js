@@ -32,6 +32,14 @@ const runSimulation = (orderedWords, wordCounts) => {
   
   const firstWord = orderedWords[0];
   const highestCount = wordCounts[firstWord];
+  
+  function avgCount(words, counts) {
+    let totalCount = 0;
+    words.slice(0,nodeCount).forEach((word) => {
+      totalCount += counts[word];
+    }); 
+  }
+
   const modifier = (1 / highestCount) * 100;
 
   const nodes = d3.range(nodeCount).map(function(i) {
