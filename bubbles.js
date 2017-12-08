@@ -113,7 +113,7 @@ const runSimulation = (orderedWords, wordCounts) => {
   // this is like animate on canvas. This function runs at a fixed time interval.
   function ticked() {
 
-    context.font = '12pt Arial';
+    context.font = '12pt arial';
     context.clearRect(0, 0, width, height);
     context.save();
     context.translate(width / 2, height / 2);

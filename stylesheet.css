@@ -11,7 +11,76 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	font-family: sans-serif;
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1, h3 {
+  text-align: center;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.sidebar-title {
+  display: inline-block;
+}
+
+.canvas-stuff {
+  display: flex;
+  flex-direction: column;
+  order: 1;
+  margin-left: 200px;
+  padding-left: 0;
+}
+
+.canvas {
+  align-content: left;
+}
+
+.file-input {
+  display: inline-block;
+  text-align: right;
 }
 
 
+
+
+.btn-group button:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #38529b;
+}
+
+.btn {
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #3498db;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  margin-bottom: 2px;
+  display: block;
+  width: 250px;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  text-decoration: none;
+}
