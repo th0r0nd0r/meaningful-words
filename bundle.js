@@ -160,14 +160,16 @@ const hashWords = (txt) => {
 };
 
 
-
+// this function gets called when a user uploads a file
 const analyze = () => {
   currentFile = fileInput.files[0];
   loadAsText(currentFile);
 };
 
 
-
+// this uses the File API to read a file asynchronously, then onload
+// it calls hashWords to turn the text into a sorted word array. 
+// wordCountsObj is globally declared in this file.
 const loadAsText = (file) => {
   const reader = new FileReader();
   
@@ -190,6 +192,8 @@ const loadAsText = (file) => {
 
 window.analyze = analyze;
 // window.loadAsText = loadAsText;
+
+// 
 
 /***/ }),
 /* 3 */
