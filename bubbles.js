@@ -2,12 +2,13 @@ import * as d3 from "d3";
 var canvas = document.getElementById("canvas");
 
 const runSimulation = (orderedWords, wordCounts) => {
+  let offset = Math.random() * 10;
 
   function getColor(value, max) {
     let newValue = ((max)/(max)*(value-max) + max) / 100;
     //value from 0 to 1
-    let hue = ((40 - newValue) * 100).toString(10);
-    return ["hsl(", hue, ",100%,50%)"].join("");
+    let hue = ((offset - newValue) * 90).toString(10);
+    return ["hsl(", hue, ",50%,70%)"].join("");
   }
 
   canvas.addEventListener("mousemove", updatePointer);
@@ -80,8 +81,8 @@ const runSimulation = (orderedWords, wordCounts) => {
       context.arc(d.x, d.y, d.r, 0, tau);
       context.fillStyle = getColor(d.r, highestCount);
       context.fill();
-      context.strokeStyle = "#333";
-      context.stroke();
+      // context.strokeStyle = "#333";
+      // context.stroke();
       context.closePath();
     });
   
