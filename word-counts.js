@@ -96,7 +96,7 @@ const loadAsText = (file) => {
 
     console.log("sorted");
     console.log(sorted);
-    document.write(sorted);
+    // document.write(sorted);
 
     // imported from bubbles, this renders the bubbles to the canvas
     runSimulation(sorted, wordCountsObj);
