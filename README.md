@@ -1,6 +1,6 @@
 # Meaningful Words
 
-### [Live Link](https://th0r0nd0r.github.io/meaningful-words/)
+## [Live Link](https://th0r0nd0r.github.io/meaningful-words/)
 
 
 ### The Product
